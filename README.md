@@ -61,7 +61,7 @@ public class OrderService {
 ### 2.1 Maven Dependencies
 
 Core Spring Kafka:
-```
+```xml
 <dependency>
     <groupId>org.springframework.kafka</groupId>
     <artifactId>spring-kafka</artifactId>
@@ -76,7 +76,7 @@ Core Spring Kafka:
 </dependency>
 ```
 Spring Boot Starter (Recommended):
-```
+```xml
 <dependency>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-web</artifactId>
@@ -85,9 +85,10 @@ Spring Boot Starter (Recommended):
     <groupId>org.springframework.kafka</groupId>
     <artifactId>spring-kafka</artifactId>
 </dependency>
+```
 Spring Cloud Stream:
-```
-```
+
+```xml
 <dependency>
     <groupId>org.springframework.cloud</groupId>
     <artifactId>spring-cloud-stream</artifactId>

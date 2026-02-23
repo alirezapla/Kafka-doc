@@ -147,7 +147,7 @@ spring:
 ### 3.2 Programmatic Configuration
 Custom Producer Factory:
 
-```
+```java
 @Configuration
 public class KafkaProducerConfig {
     
@@ -171,7 +171,7 @@ public class KafkaProducerConfig {
 ```
 Custom Consumer Factory with Error Handling:
 
-```
+```java
 @Configuration
 public class KafkaConsumerConfig {
     
@@ -222,7 +222,7 @@ public class KafkaConsumerConfig {
 ## 4. Producer Implementation Patterns
 ### 4.1 KafkaTemplate Patterns
 Basic Send Operations:
-```
+```java
 @Service
 @Slf4j
 public class OrderProducerService {
@@ -257,7 +257,7 @@ public class OrderProducerService {
 }
 ```
 Transaction-Aware Producer:
-```
+```java
 @Service
 public class TransactionalOrderService {
     
@@ -289,7 +289,7 @@ public class TransactionalOrderService {
 ```
 ### 4.2 Partitioning Strategies
 Custom Partitioner:
-```
+```java
 @Component
 public class OrderPartitioner implements Partitioner {
     
@@ -312,7 +312,7 @@ public class OrderPartitioner implements Partitioner {
 }
 ```
 Partition-Aware Sending:
-```
+```java
 @Service
 public class PartitionedProducer {
     
@@ -332,7 +332,7 @@ public class PartitionedProducer {
 ## 5. Consumer Implementation Patterns
 ### 5.1 @KafkaListener Patterns
 Basic Listener:
-```
+```java
 @Component
 @Slf4j
 public class OrderConsumer {
@@ -349,7 +349,7 @@ public class OrderConsumer {
 }
 ```
 Manual Acknowledgment:
-```
+```java
 @Component
 @Slf4j
 public class ReliableOrderConsumer {
@@ -376,7 +376,7 @@ public class ReliableOrderConsumer {
 }
 ```
 Batch Consumption:
-```
+```java
 @Component
 @Slf4j
 public class BatchOrderConsumer {
@@ -403,7 +403,7 @@ public class BatchOrderConsumer {
 ```
 ### 5.2 Advanced Consumer Patterns
 Dynamic Topic Subscription:
-```
+```java
 @Component
 public class DynamicTopicConsumer {
     
@@ -425,7 +425,7 @@ public class DynamicTopicConsumer {
 }
 ```
 Manual Partition Assignment:
-```
+```java
 @Component
 public class PartitionAwareConsumer {
     
@@ -459,7 +459,7 @@ public class PartitionFinder {
 ```
 ## 6. Kafka Streams Integration
 ### 6.1 Basic Streams Configuration
-```
+```java
 @Configuration
 @EnableKafkaStreams
 public class KafkaStreamsConfig {
@@ -479,7 +479,7 @@ public class KafkaStreamsConfig {
 }
 ```
 ### 6.2 Stream Processing Topology
-```
+```java
 @Component
 public class WordCountProcessor {
     
@@ -498,7 +498,7 @@ public class WordCountProcessor {
 }
 ```
 ### 6.3 Interactive Queries
-```
+```java
 @Service
 public class WordCountQueryService {
     
@@ -518,7 +518,7 @@ public class WordCountQueryService {
 ```
 ### 6.4 Spring Cloud Stream Kafka Streams
 Functional Style (Modern Approach):
-```
+```java
 @SpringBootApplication
 public class StreamProcessingApplication {
     
@@ -549,7 +549,7 @@ public class StreamProcessingApplication {
 
 Configuration:
 
-```
+```yaml
 spring:
   cloud:
     stream:
@@ -575,7 +575,7 @@ spring:
 ## 7. Spring Cloud Stream Abstraction
 ### 7.1 Binder-Based Configuration
 
-```
+```yaml
 spring:
   cloud:
     stream:
@@ -603,7 +603,7 @@ spring:
 
 ### 7.2 Functional Programming Model
 
-```
+```java
 @Component
 public class OrderFunctions {
     
@@ -633,7 +633,7 @@ public class OrderFunctions {
 ## 8. Transaction Management
 ### 8.1 Kafka-Only Transactions
 
-```
+```java
 @Configuration
 public class KafkaTransactionConfig {
     
@@ -654,7 +654,7 @@ public class KafkaTransactionConfig {
 ```
 
 ### 8.2 Distributed Transactions (Kafka + Database)
-```
+```java
 @Service
 public class DistributedTransactionService {
     
@@ -694,7 +694,7 @@ public class ChainedTxConfig {
 }
 ```
 ### 8.3 Best Practices for Transactions
-```
+```java
 // Idempotent consumer pattern for transactional safety
 @Component
 public class IdempotentOrderConsumer {
@@ -722,7 +722,7 @@ public class IdempotentOrderConsumer {
 ```
 ## 9. Error Handling & Resilience
 ### 9.1 Dead Letter Queue (DLQ) Pattern
-```
+```java
 @Configuration
 public class ErrorHandlingConfig {
     
@@ -764,7 +764,7 @@ public class ErrorHandlingConfig {
 }
 ```
 ### 9.2 Retry with Backoff
-```
+```java
 @Component
 public class RetryableConsumer {
     
@@ -789,7 +789,7 @@ public class RetryableConsumer {
 }
 ```
 ### 9.3 Circuit Breaker Integration
-```
+```java
 @Component
 public class ResilientConsumer {
     
@@ -813,7 +813,7 @@ public class ResilientConsumer {
 ## 10. Security Implementation
 ### 10.1 SASL/SSL Configuration
 
-```
+```yaml
 spring:
   kafka:
     security:
@@ -832,7 +832,7 @@ spring:
 ```
 
 ### 10.2 ACLs and Authorization
-```
+```java
 @Configuration
 public class KafkaSecurityConfig {
     
@@ -868,7 +868,7 @@ public class KafkaSecurityConfig {
 ```
 ## 11. Testing Strategies
 ### 11.1 Embedded Kafka Tests
-```
+```java
 @SpringBootTest
 @EmbeddedKafka(
     partitions = 1,
@@ -915,7 +915,7 @@ class OrderProducerIntegrationTest {
 ```
 
 ### 11.2 Testcontainers for Integration Testing
-```
+```java
 @Testcontainers
 @SpringBootTest
 class KafkaIntegrationTest {
@@ -939,7 +939,7 @@ class KafkaIntegrationTest {
 
 ### 11.3 Mocking Kafka in Unit Tests
 
-```
+```java
 @ExtendWith(MockitoExtension.class)
 class OrderServiceTest {
     
@@ -968,7 +968,7 @@ class OrderServiceTest {
 ## 12. Monitoring & Observability
 ### 12.1 Micrometer Metrics
 
-```
+```yaml
 management:
   endpoints:
     web:
@@ -984,7 +984,7 @@ management:
 
 ### 12.2 Custom Health Indicators
 
-```
+```java
 @Component
 public class KafkaHealthIndicator implements HealthIndicator {
     
@@ -1010,7 +1010,7 @@ public class KafkaHealthIndicator implements HealthIndicator {
 
 ### 12.3 Consumer Lag Monitoring
 
-```
+```java
 @Component
 public class ConsumerLagMonitor {
     
